@@ -23,6 +23,9 @@ function handleCheck(id, checked) {
       setPlayList([...playList, trackToPlayList]);
     }
 
+} else {
+   const unChecked =  playList.filter(item => item.id !== id );
+   setPlayList(unChecked);
 }
 
 }
@@ -32,7 +35,7 @@ function handleCheck(id, checked) {
     return (
             <>
             <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult}  />
-            <SearchResults matchResult={result}/>
+            <SearchResults matchResult={result} handleCheck={handleCheck}/>
             <PlayList playListName={playListName} playList={playList} setPlayList={setPlayList} />
 
             </>

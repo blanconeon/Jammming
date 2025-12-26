@@ -4,7 +4,11 @@ export default function TrackList(props) {
 
 return (
     <>
-    <Track playList={props.playList} />
+    <ul>{props.playList.map((item) => (
+  <Track track={item} key={item.id} />
+    ))}
+   
+    </ul>
     </>
 )
 
