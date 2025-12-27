@@ -8,10 +8,8 @@ return (
       {props.matchResult.map(({ id, artist, name, album }) => (
   <li key={id}>
    Name: {name}, Artist: {artist}, Album: {album}
-    <input
-        type="checkbox"
-        onChange={(e) => props.handleCheck(id, e.target.checked)}
-      /></li>
+    <button onClick={() => props.handleCheck(id, true)}>+</button>
+</li>
      ))
      }
      </ul>

@@ -8,7 +8,7 @@ export default function App() {
 
 const [searchInput, setSearchInput] = useState(''); 
 const [result, setResult] = useState([]);
-const [playListName, setPlayListName] = useState('The List');
+const [playListName, setPlayListName] = useState('');
 const [playList, setPlayList] = useState([]);
 
 function updateRootState(e) {
@@ -16,30 +16,37 @@ function updateRootState(e) {
 }
 
 function handleCheck(id, checked) {
-  // logic to add or remove track by id to playList
+  // logic to add track by id on matchresults from playList
   if (checked) {
   const trackToPlayList = result.find(t => t.id === id);
   if (!playList.some(t => t.id === id)) {
       setPlayList([...playList, trackToPlayList]);
-    }
+    } } }
 
-} else {
-   const unChecked =  playList.filter(item => item.id !== id );
-   setPlayList(unChecked);
-}
+function removeFromPlayList(id, clicked) {
+    if (clicked){
+    const removeClicked =  playList.filter(item => item.id !== id );
+   setPlayList(removeClicked);
+    } }
 
-}
-
+function updatePlayListName(value){
+   setPlayListName(value); 
+}    
 
 
     return (
             <>
             <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult}  />
             <SearchResults matchResult={result} handleCheck={handleCheck}/>
-            <PlayList playListName={playListName} playList={playList} setPlayList={setPlayList} />
+            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} />
 
             </>
     )
 }
 
 /*in handleCheck, you should search through your track list (such as your search results) to find the track object with the matching id. You can use .find() to get the whole track object. .map would only get individual matches*/
+
+/* else {
+   const unChecked =  playList.filter(item => item.id !== id );
+   setPlayList(unChecked);////
+} */

@@ -3,12 +3,18 @@ export default function PlayList (props) {
 
  return (
 <div>
- <h3>{props.playListName}</h3>
-<TrackList playList={props.playList}/>
+ <form>
+   <input type='text' 
+          aria-label="Play List Name"
+          placeholder="Play List Name"
+          value={props.playListName}
+          onChange={(e) => props.updatePlayListName(e.target.value)} /> 
+<TrackList playList={props.playList} removeFromPlayList={props.removeFromPlayList}/>
 
 
 
-<button>Save Play List</button>
+<input type="submit" value="Save Playlist" />
+</form>
 </div>
  )
  

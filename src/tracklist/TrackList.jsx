@@ -5,9 +5,9 @@ export default function TrackList(props) {
 return (
     <>
     <ul>{props.playList.map((item) => (
-  <Track track={item} key={item.id} />
+  <Track track={item} key={item.id} removeFromPlayList={props.removeFromPlayList} />
     ))}
-   
+
     </ul>
     </>
 )
