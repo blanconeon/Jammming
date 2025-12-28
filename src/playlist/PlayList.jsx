@@ -3,7 +3,7 @@ export default function PlayList (props) {
 
  return (
 <div>
- <form>
+ <form onSubmit={props.getUris}>
    <input type='text' 
           aria-label="Play List Name"
           placeholder="Play List Name"

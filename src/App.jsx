@@ -33,12 +33,20 @@ function updatePlayListName(value){
    setPlayListName(value); 
 }    
 
+function getUris(event) {
+    event.preventDefault();
+    const uris = playList.map( track => track.uri);
+    alert('List Saved!');
+    console.log(uris);
+    setPlayList([]);
+}
+
 
     return (
             <>
             <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult}  />
             <SearchResults matchResult={result} handleCheck={handleCheck}/>
-            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} />
+            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris} />
 
             </>
     )
@@ -46,7 +54,5 @@ function updatePlayListName(value){
 
 /*in handleCheck, you should search through your track list (such as your search results) to find the track object with the matching id. You can use .find() to get the whole track object. .map would only get individual matches*/
 
-/* else {
-   const unChecked =  playList.filter(item => item.id !== id );
-   setPlayList(unChecked);////
-} */
+/* spotify:track:11Z6PtzVUZ3PxUeyqDyHjE 
+http://127.0.0.1:5173/ Redirect URIs*/
