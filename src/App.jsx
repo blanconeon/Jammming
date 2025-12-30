@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchBar from './searchbar/SearchBar';
 import SearchResults from './searchresults/SearchResults';
-import PlayList from './playlist/PlayList'; 
+import PlayList from './playlist/PlayList';
+import accessToken from './spotifyApis/spotifyToken'; 
 
 
 export default function App() {
@@ -10,6 +11,16 @@ const [searchInput, setSearchInput] = useState('');
 const [result, setResult] = useState([]);
 const [playListName, setPlayListName] = useState('');
 const [playList, setPlayList] = useState([]);
+const [token, setToken] = useState('');
+
+useEffect(() => {
+  accessToken(setToken);
+}, []);
+
+useEffect(() => {
+ console.log(token); 
+}, [token]);
+
 
 function updateRootState(e) {
   setSearchInput(e.target.value);
