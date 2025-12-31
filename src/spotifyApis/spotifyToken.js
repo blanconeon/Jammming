@@ -1,5 +1,5 @@
 
-export default async function accessToken(setToken) {
+export default async function accessToken(setToken, setTokenTimeOut) {
   try {
     const response = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
@@ -11,6 +11,9 @@ export default async function accessToken(setToken) {
       throw new Error('Network response was not ok');
     }
     const json = await response.json();
+    console.log(json);
+    const expirationTime = Date.now() + json.expires_in * 1000; //collects expiry time, 3600 secs is returnes, times 1000 to match setTimeOut's format.  
+    setTokenTimeOut(expirationTime);
     setToken(json.access_token);
     } catch (err) {
         console.error(err);

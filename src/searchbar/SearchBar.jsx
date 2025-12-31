@@ -5,11 +5,7 @@ export default function SearchBar(props) {
 
   function handleSubmit(event) {
     event.preventDefault(); 
-    const matches = mockTracks.filter(track =>
-    Object.values(track).some(val =>
-    val.toLowerCase().includes(props.searchInput.toLowerCase())
-    ));
-    props.setResult(matches);
+    props.getMusic(props.token, props.userInput);
   }
 
 
@@ -46,4 +42,14 @@ Here is a step-by-step explanation:
 
 If any value in the object matches the search input, that object is kept in the filtered array. If not, it is left out.
 
-using .includes() allows partial matches, so even a few letters will find results anywhere in the string, not just exact phrases or words. This makes your search flexible and user-friendly.*/
+using .includes() allows partial matches, so even a few letters will find results anywhere in the string, not just exact phrases or words. This makes your search flexible and user-friendly.
+
+
+ function handleSubmit(event) {
+    event.preventDefault(); 
+    const matches = mockTracks.filter(track =>
+    Object.values(track).some(val =>
+    val.toLowerCase().includes(props.searchInput.toLowerCase())
+    ));
+    props.setResult(matches);
+  }*/
