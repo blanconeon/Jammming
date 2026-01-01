@@ -63,7 +63,7 @@ function getUris(event) {
     return (
             <>
             <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} token={token} userInput={searchInput}/>
-            <SearchResults matchResult={result} handleCheck={handleCheck}/>
+            <SearchResults result={result} handleCheck={handleCheck}/>
             <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris} />
 
             </>

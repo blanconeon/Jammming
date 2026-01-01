@@ -1,5 +1,5 @@
 
-export default async function getMusic(token, searchInput ) {
+export default async function getMusic(token, searchInput, setResult ) {
    const query = encodeURIComponent(searchInput);
   try {
     const response = await fetch(`https://api.spotify.com/v1/search?q=${query}&type=track`, {
@@ -13,7 +13,17 @@ export default async function getMusic(token, searchInput ) {
     }
     const apiResponseData = await response.json();
     // Do something with data
-    console.log(apiResponseData)
+    console.log(apiResponseData);
+    const simplifiedTracks = apiResponseData.tracks.items.map(track => ({
+     id: track.id,
+     name: track.name,
+     artist: track.artists[0].name,
+     album: track.album.name,
+     uri: track.uri
+   }));
+     console.log(simplifiedTracks);
+     setResult(simplifiedTracks);
+
     //return apiResponseData;
   } catch (error) {
     // Handle error

@@ -5,7 +5,7 @@ export default function SearchBar(props) {
 
   function handleSubmit(event) {
     event.preventDefault(); 
-    props.getMusic(props.token, props.userInput);
+    props.getMusic(props.token, props.userInput, props.setResult);
   }
 
 
