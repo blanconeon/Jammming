@@ -4,6 +4,8 @@ import SearchResults from './searchresults/SearchResults';
 import PlayList from './playlist/PlayList';
 import accessToken from './spotifyApis/spotifyToken';
 import getMusic from './spotifyApis/spotifyApi'; 
+import { preparePKCEAndRedirect } from './spotifyApis/spotifyToken';
+
 
 
 export default function App() {
@@ -63,7 +65,7 @@ const clientId = 'aa0c6d616280473e980cd52bd6028a41';
 const redirectUri = 'http://127.0.0.1:5173/';
 const scopes = 'playlist-modify-public playlist-modify-private';
 
-function getSpotifyAuthUrl() {
+/*function getSpotifyAuthUrl() {
   const authEndpoint = 'https://accounts.spotify.com/authorize';
   const params = [
     `client_id=${clientId}`,
@@ -72,14 +74,14 @@ function getSpotifyAuthUrl() {
     `scope=${encodeURIComponent(scopes)}`
   ];
   return `${authEndpoint}?${params.join('&')}`;
-}
+}*/
 
 
     return (
             <>
             <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} token={token} userInput={searchInput}/>
             <SearchResults result={result} handleCheck={handleCheck}/>
-            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris} getSpotifyAuthUrl={getSpotifyAuthUrl}/>
+            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris} preparePKCEAndRedirect={preparePKCEAndRedirect}/>
 
             </>
     )

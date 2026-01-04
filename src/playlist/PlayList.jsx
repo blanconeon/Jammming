@@ -2,9 +2,8 @@ import TrackList from '../tracklist/TrackList';
 export default function PlayList (props) {
 
 function handleLogin(event) {
-    event.preventDefault();
-    console.log(props.getSpotifyAuthUrl());
-    window.location = props.getSpotifyAuthUrl();
+     event.preventDefault();
+     props.preparePKCEAndRedirect(); // This will handle everything, including redirect
 }
  
 

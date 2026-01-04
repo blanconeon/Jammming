@@ -30,3 +30,21 @@ export default async function getMusic(token, searchInput, setResult ) {
     console.error(error);
   }
 }
+
+    /*async function codeToToken() {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+
+    if (code) {
+            await fetch ("https://accounts.spotify.com/api/token", { method: 'POST',
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+    },
+     body: new URLSearchParams({
+     client_id: 'aa0c6d616280473e980cd52bd6028a41',
+      grant_type: 'authorization_code',
+      code,
+      redirect_uri: 'http://127.0.0.1:5173/',
+      code_verifier: codeVerifier,
+    }),
+    })}} */
