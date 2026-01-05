@@ -3,7 +3,7 @@ export default function PlayList (props) {
 
 function handleLogin(event) {
      event.preventDefault();
-     props.preparePKCEAndRedirect(); // This will handle everything, including redirect
+     //props.preparePKCEAndRedirect(); // This will handle everything, including redirect
 }
  
 

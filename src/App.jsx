@@ -4,7 +4,7 @@ import SearchResults from './searchresults/SearchResults';
 import PlayList from './playlist/PlayList';
 import accessToken from './spotifyApis/spotifyToken';
 import getMusic from './spotifyApis/spotifyApi'; 
-import { preparePKCEAndRedirect } from './spotifyApis/spotifyToken';
+//import { preparePKCEAndRedirect } from './spotifyApis/spotifyToken';
 
 
 
@@ -81,7 +81,7 @@ const scopes = 'playlist-modify-public playlist-modify-private';
             <>
             <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} token={token} userInput={searchInput}/>
             <SearchResults result={result} handleCheck={handleCheck}/>
-            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris} preparePKCEAndRedirect={preparePKCEAndRedirect}/>
+            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris}/>
 
             </>
     )

@@ -21,7 +21,7 @@ export default async function accessToken(setToken, setTokenTimeOut) {
     }
  // Authorization Code with PKCE   
 
-
+/*
  // 1. Generate a random code verifier
 const generateRandomString = (length) => {
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -70,6 +70,6 @@ const base64encode = (input) => {
   window.location = authUrl;
 }
 
-// Call preparePKCEAndRedirect() when the user clicks "Log in with Spotify"
+// Call preparePKCEAndRedirect() when the user clicks "Log in with Spotify"*/
 
 
