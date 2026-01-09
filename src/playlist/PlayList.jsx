@@ -1,7 +1,7 @@
 import TrackList from '../tracklist/TrackList';
 export default function PlayList (props) {
 
-function handleLogin(event) {
+function handleSavePlayList(event) {
      event.preventDefault();
      //props.preparePKCEAndRedirect(); // This will handle everything, including redirect
 }
@@ -9,7 +9,7 @@ function handleLogin(event) {
 
  return (
 <div>
- <form onSubmit={handleLogin}>
+ <form onSubmit={handleSavePlayList}>
    <input type='text' 
           aria-label="Play List Name"
           placeholder="Play List Name"

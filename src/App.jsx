@@ -2,34 +2,55 @@ import { useState, useEffect } from "react";
 import SearchBar from './searchbar/SearchBar';
 import SearchResults from './searchresults/SearchResults';
 import PlayList from './playlist/PlayList';
-import accessToken from './spotifyApis/spotifyToken';
+//import accessToken from './spotifyApis/spotifyToken';
 import getMusic from './spotifyApis/spotifyApi'; 
-//import { preparePKCEAndRedirect } from './spotifyApis/spotifyToken';
-
+import { preparePKCEAndRedirect } from './spotifyApis/spotifyToken';
+import {getToken} from './spotifyApis/spotifyToken';
+import {getUserProfile} from './spotifyApis/spotifyToken';
 
 
 export default function App() {
+//We must then parse the URL to retrieve the code parameter after user logs in
+const urlParams = new URLSearchParams(window.location.search);
+let code = urlParams.get('code');
 
 const [searchInput, setSearchInput] = useState(''); 
 const [result, setResult] = useState([]);
 const [playListName, setPlayListName] = useState('');
 const [playList, setPlayList] = useState([]);
-const [token, setToken] = useState('');
-const [tokenTimeOut, setTokenTimeOut] = useState(null);
+const [userId, setUserId] = useState('');
+const [accessToken, setAccessToken] = useState('');
+//const [tokenTimeOut, setTokenTimeOut] = useState(null);
+
+
+function handleLogIn(event) {
+    preparePKCEAndRedirect();
+}
+//Async functions that redirect don’t need waiting; async functions that return data do. handleLogIn redirects, getUserProfile stores/fetches data. 
+
+useEffect(()=> {
+    async function settingAccessToken() {
+        if(code){
+         await getToken(code, setAccessToken);
+         window.history.replaceState({}, document.title, '/'); // without this Authorization code reuse due to re-renders causing a 400 error.    
+        }
+    }
+    settingAccessToken();
+}, [code])
+
 
 useEffect(() => {
-  accessToken(setToken, setTokenTimeOut);
-}, []);
+  async function loadUser() {
+    if (accessToken) {
+      const id = await getUserProfile(accessToken);
+      setUserId(id);                            // //storing in state
+    }
+  }
 
-useEffect(() => {
-  if (!token || !tokenTimeOut) return;
-  const timeout = setTimeout(() => {
-    setToken('');
-  }, tokenTimeOut - Date.now());
-  return () => clearTimeout(timeout);
-}, [token, tokenTimeOut]);
+  loadUser();
+}, [accessToken]);
 
-
+    
 
 function updateRootState(e) {
   setSearchInput(e.target.value);
@@ -61,25 +82,12 @@ function getUris(event) {
     setPlayList([]);
 }
 
-const clientId = 'aa0c6d616280473e980cd52bd6028a41';
-const redirectUri = 'http://127.0.0.1:5173/';
-const scopes = 'playlist-modify-public playlist-modify-private';
-
-/*function getSpotifyAuthUrl() {
-  const authEndpoint = 'https://accounts.spotify.com/authorize';
-  const params = [
-    `client_id=${clientId}`,
-    `response_type=code`,
-    `redirect_uri=${encodeURIComponent(redirectUri)}`,
-    `scope=${encodeURIComponent(scopes)}`
-  ];
-  return `${authEndpoint}?${params.join('&')}`;
-}*/
 
 
     return (
             <>
-            <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} token={token} userInput={searchInput}/>
+            <button onClick={handleLogIn} >Please Log in to Spotify</button>
+            <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} userInput={searchInput}/>
             <SearchResults result={result} handleCheck={handleCheck}/>
             <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris}/>
 
