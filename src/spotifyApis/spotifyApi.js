@@ -31,4 +31,56 @@ export default async function getMusic(token, searchInput, setResult ) {
   }
 }
 
+
+
+export async function getUserProfile(accessToken) {
+
+  const response = await fetch('https://api.spotify.com/v1/me', {
+    headers: {
+      Authorization: 'Bearer ' + accessToken
+    }
+  });
+
+  const data = await response.json();
+  const loggedUserId = data.id
+  console.log(loggedUserId);
+  return loggedUserId;
+}
    
+
+export async function savePlayListToSpotify(userId, accessToken, playListName ) {
+   const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+    method: 'POST',
+    headers: {
+        Authorization: 'Bearer ' + accessToken,
+        'Content-Type': 'application/json'
+    },
+       body: JSON.stringify({
+        name: playListName,
+        public: false
+       })
+
+   }
+   );
+   
+   const data = await response.json();
+   console.log(data);
+  return data; // contains the new playlist (including playlist.id)
+
+}
+export async function addTracksToPlaylist(playlist, accessToken, uris){
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
+        method: 'POST',
+        headers: {
+            Authorization: 'Bearer' + accessToken,
+            'Content-Type': 'application/json'
+        },
+       body: {
+        uris: [
+            'string'
+        ],
+        position: 0
+
+       }
+    }) 
+}

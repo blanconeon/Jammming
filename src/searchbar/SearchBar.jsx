@@ -5,12 +5,12 @@ export default function SearchBar(props) {
 
   function handleSubmit(event) {
     event.preventDefault(); 
-    props.getMusic(props.token, props.userInput, props.setResult);
+    props.getMusic(props.accessToken, props.userInput, props.setResult);
   }
 
 
     return (
-     <form className="AddThoughtForm"onSubmit={handleSubmit} >
+     <form onSubmit={handleSubmit} >
       <input
         type="text"
         aria-label="Search"

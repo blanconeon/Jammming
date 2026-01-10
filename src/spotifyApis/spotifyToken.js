@@ -92,17 +92,5 @@ const base64encode = (input) => {
 
 
 
-export async function getUserProfile(accessToken) {
 
-  const response = await fetch('https://api.spotify.com/v1/me', {
-    headers: {
-      Authorization: 'Bearer ' + accessToken
-    }
-  });
-
-  const data = await response.json();
-  const loggedUserId = data.id
-  console.log(loggedUserId);
-  return loggedUserId;
-}
 

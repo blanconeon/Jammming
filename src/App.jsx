@@ -6,8 +6,8 @@ import PlayList from './playlist/PlayList';
 import getMusic from './spotifyApis/spotifyApi'; 
 import { preparePKCEAndRedirect } from './spotifyApis/spotifyToken';
 import {getToken} from './spotifyApis/spotifyToken';
-import {getUserProfile} from './spotifyApis/spotifyToken';
-
+import {getUserProfile} from './spotifyApis/spotifyApi';
+import {savePlayListToSpotify} from './spotifyApis/spotifyApi';
 
 export default function App() {
 //We must then parse the URL to retrieve the code parameter after user logs in
@@ -57,7 +57,7 @@ function updateRootState(e) {
 }
 
 function handleCheck(id, checked) {
-  // logic to add track by id on matchresults from playList
+  // logic to add track by id on matchresults to playList
   if (checked) {
   const trackToPlayList = result.find(t => t.id === id);
   if (!playList.some(t => t.id === id)) {
@@ -87,9 +87,9 @@ function getUris(event) {
     return (
             <>
             <button onClick={handleLogIn} >Please Log in to Spotify</button>
-            <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} userInput={searchInput}/>
+            <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} userInput={searchInput} accessToken={accessToken}/>
             <SearchResults result={result} handleCheck={handleCheck}/>
-            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris}/>
+            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} getUris={getUris} savePlayListToSpotify={savePlayListToSpotify} userId={userId} accessToken={accessToken}/>
 
             </>
     )
