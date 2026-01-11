@@ -1,10 +1,21 @@
 import TrackList from '../tracklist/TrackList';
 export default function PlayList (props) {
 
-function handleSavePlayList(event) {
-     event.preventDefault();
-     console.log('saving playlist!');
-     props.savePlayListToSpotify(props.userId, props.accessToken, props.playListName)
+async function handleSavePlayList(event) {
+    event.preventDefault();
+    const playlist = await props.savePlayListToSpotify(
+    props.userId,
+    props.accessToken,
+    props.playListName
+  );
+
+  const uris = props.playList.map(track => track.uri);
+
+  await props.addTracksToPlaylist(
+    playlist.id,
+    props.accessToken,
+    uris
+  );
     
 }
  
@@ -40,20 +51,19 @@ above can be passed down from app instead of  props.savePlayListToSpotify(props.
 
 async function handleSavePlaylist() {
   const playlist = await savePlayListToSpotify(
-    userId,
-    accessToken,
-    playListName
+    props.userId,
+    props.accessToken,
+    props.playListName
   );
 
-  const uris = playList.map(track => track.uri);
+  const uris = props.playList.map(track => track.uri);
 
   await addTracksToPlaylist(
     playlist.id,
-    accessToken,
+    props.accessToken,
     uris
   );
-
-  setPlayList([]);
 }
 
+  event.preventDefault();
 */

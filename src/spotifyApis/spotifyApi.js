@@ -68,19 +68,17 @@ export async function savePlayListToSpotify(userId, accessToken, playListName ) 
   return data; // contains the new playlist (including playlist.id)
 
 }
-export async function addTracksToPlaylist(playlist, accessToken, uris){
-    const response = await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
+export async function addTracksToPlaylist(playlistId, accessToken, uris){
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
         method: 'POST',
         headers: {
-            Authorization: 'Bearer' + accessToken,
+            Authorization: 'Bearer ' + accessToken,
             'Content-Type': 'application/json'
         },
-       body: {
-        uris: [
-            'string'
-        ],
-        position: 0
-
-       }
-    }) 
+       body: JSON.stringify({
+        uris: uris
+       })
+    }
+  );
+  return response.json(); 
 }
