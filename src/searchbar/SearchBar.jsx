@@ -4,7 +4,10 @@ import { mockTracks } from "./mockTracks";
 export default function SearchBar(props) {
 
   function handleSubmit(event) {
-    event.preventDefault(); 
+    event.preventDefault();
+    if (props.searchInput.trim().length === 0) {
+      return;// block enter/subbmit if input is empty 
+    } 
     props.getMusic(props.accessToken, props.userInput, props.setResult);
   }
 
