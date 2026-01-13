@@ -62,8 +62,7 @@ function handleCheck(id, checked) {
   if (checked) {
   const trackToPlayList = result.find(t => t.id === id);
   if (!playList.some(t => t.id === id)) {
-      setPlayList([...playList, trackToPlayList]);
-      console.log(playList);
+      setPlayList(prev => [...prev, trackToPlayList]);
     } } }
 
 function removeFromPlayList(id, clicked) {
