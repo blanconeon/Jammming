@@ -1,3 +1,4 @@
+import styles from './cssModules/App.module.css';
 import { useState, useEffect } from "react";
 import SearchBar from './searchbar/SearchBar';
 import SearchResults from './searchresults/SearchResults';
