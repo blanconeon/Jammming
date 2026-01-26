@@ -22,7 +22,7 @@ const [playListName, setPlayListName] = useState('');
 const [playList, setPlayList] = useState([]);
 const [userId, setUserId] = useState('');
 const [accessToken, setAccessToken] = useState('');
-//const [tokenTimeOut, setTokenTimeOut] = useState(null);
+const isLoggedIn = Boolean(accessToken); // Boolean(value) is a JavaScript function that converts any value into true or false based on whether the value is truthy or falsy.
 
 
 function handleLogIn(event) {
@@ -86,15 +86,47 @@ function getUris(event) {
 
 
 
-    return (
-            <>
-            <button onClick={handleLogIn} >Please Log in to Spotify</button>
-            <SearchBar setFunction={updateRootState} searchInput={searchInput} setResult={setResult} getMusic={getMusic} userInput={searchInput} accessToken={accessToken}/>
-            <SearchResults result={result} handleCheck={handleCheck}/>
-            <PlayList playListName={playListName} playList={playList} updatePlayListName={updatePlayListName} removeFromPlayList={removeFromPlayList} savePlayListToSpotify={savePlayListToSpotify} userId={userId} accessToken={accessToken} addTracksToPlaylist={addTracksToPlaylist} />
+   return (
+  <>
+    {/* Logged OUT state */}
+    {!isLoggedIn && (
+      <button onClick={handleLogIn}>
+        Please Log in to Spotify
+      </button>
+    )}
 
-            </>
-    )
+    {/* Logged IN state */}
+    {isLoggedIn && (
+      <>
+        <SearchBar
+          setFunction={updateRootState}
+          searchInput={searchInput}
+          setResult={setResult}
+          getMusic={getMusic}
+          userInput={searchInput}
+          accessToken={accessToken}
+        />
+
+        <SearchResults
+          result={result}
+          handleCheck={handleCheck}
+        />
+
+        <PlayList
+          playListName={playListName}
+          playList={playList}
+          updatePlayListName={updatePlayListName}
+          removeFromPlayList={removeFromPlayList}
+          savePlayListToSpotify={savePlayListToSpotify}
+          userId={userId}
+          accessToken={accessToken}
+          addTracksToPlaylist={addTracksToPlaylist}
+        />
+      </>
+    )}
+  </>
+);
+
 }
 
 /*in handleCheck, you should search through your track list (such as your search results) to find the track object with the matching id. You can use .find() to get the whole track object. .map would only get individual matches*/

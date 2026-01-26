@@ -19,7 +19,8 @@ async function handleSavePlayList(event) {
     
 }
  
-
+//  Derived boolean: can we save?
+  const canSave = props.playListName && props.playList.length > 0;
  return (
 <div>
  <form onSubmit={handleSavePlayList}>
@@ -27,19 +28,33 @@ async function handleSavePlayList(event) {
           aria-label="Play List Name"
           placeholder="Play List Name"
           value={props.playListName}
-          onChange={(e) => props.updatePlayListName(e.target.value)} /> 
-<TrackList playList={props.playList} removeFromPlayList={props.removeFromPlayList}/>
+          onChange={(e) => props.updatePlayListName(e.target.value)}
+           /> 
+
+<TrackList playList={props.playList} 
+removeFromPlayList={props.removeFromPlayList}
+/>
 
 
-
-<input type="submit" value="Save Playlist to Spotify" />
+<input
+ type="submit"
+ value="Save Playlist to Spotify" 
+ disabled={!canSave}
+ title={!props.playListName ? "Enter a playlist name" : "Add at least one track"}
+ 
+ />
 </form>
 </div>
  )
  
 }
 
-/*onSavePlaylist={() =>
+/*
+ on input   disabled={!canSave} → button is unclickable if conditions aren’t met
+
+title=... → shows a tooltip on hover explaining why // 
+
+onSavePlaylist={() =>
   savePlayListToSpotify(userId, accessToken, playListName)
 }
 above can be passed down from app instead of  props.savePlayListToSpotify(props.userId, props.accessToken, props.playListName)
@@ -49,21 +64,5 @@ above can be passed down from app instead of  props.savePlayListToSpotify(props.
 
 
 
-async function handleSavePlaylist() {
-  const playlist = await savePlayListToSpotify(
-    props.userId,
-    props.accessToken,
-    props.playListName
-  );
 
-  const uris = props.playList.map(track => track.uri);
-
-  await addTracksToPlaylist(
-    playlist.id,
-    props.accessToken,
-    uris
-  );
-}
-
-  event.preventDefault();
 */
