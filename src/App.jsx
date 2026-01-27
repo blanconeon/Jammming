@@ -21,6 +21,7 @@ const [result, setResult] = useState([]);
 const [playListName, setPlayListName] = useState('');
 const [playList, setPlayList] = useState([]);
 const [userId, setUserId] = useState('');
+const [userName, setUserName] = useState('');
 const [accessToken, setAccessToken] = useState('');
 const isLoggedIn = Boolean(accessToken); // Boolean(value) is a JavaScript function that converts any value into true or false based on whether the value is truthy or falsy.
 
@@ -44,8 +45,9 @@ useEffect(()=> {
 useEffect(() => {
   async function loadUser() {
     if (accessToken) {
-      const id = await getUserProfile(accessToken);
-      setUserId(id);                            // //storing in state
+      const {id, name} = await getUserProfile(accessToken);
+      setUserId(id);
+      setUserName(name);                            // //storing in state
     }
   }
 
@@ -97,7 +99,8 @@ function getUris(event) {
 
     {/* Logged IN state */}
     {isLoggedIn && (
-      <>
+      <> 
+        <h2>Welcome Back! {userName}</h2>
         <SearchBar
           setFunction={updateRootState}
           searchInput={searchInput}

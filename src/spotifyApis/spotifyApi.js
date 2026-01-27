@@ -42,9 +42,12 @@ export async function getUserProfile(accessToken) {
   });
 
   const data = await response.json();
-  const loggedUserId = data.id
-  console.log(loggedUserId);
-  return loggedUserId;
+  console.log(data);
+  
+  return {
+    id: data.id,
+    name: data.display_name
+  };
 }
    
 
