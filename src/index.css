@@ -1,3 +1,15 @@
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* the above: margin: 0 → removes the browser’s default spacing
+width: 100% → lets children use the full viewport width
+min-height: 100% → allows vertical stretching and centering
+html, body, #root → ensures every parent of your app participates in layout */
+
+/* Base theme + typography */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +25,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Links */
 a {
   font-weight: 500;
   color: #646cff;
@@ -22,56 +35,41 @@ a:hover {
   color: #535bf2;
 }
 
+/* Body layout */
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
 }
 
+/* React root container */
+#root {
+  flex: 1;
+  align-self: stretch; /* That forces #root to actually occupy the full height/width that body has */
+  width: 100%;
+}
+
+/* Headings */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
+/* Page background */
 body {
   background-image: url('./imgs/backgroundimg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  justify-content: center;
 }
 
-
-
- /*@media (prefers-color-scheme: light) {
+/*@media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }*/

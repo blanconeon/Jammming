@@ -10,6 +10,8 @@ import {getToken} from './spotifyApis/spotifyToken';
 import {getUserProfile} from './spotifyApis/spotifyApi';
 import {savePlayListToSpotify} from './spotifyApis/spotifyApi';
 import {addTracksToPlaylist} from './spotifyApis/spotifyApi';
+import logoImg from './imgs/logoimg.png';
+
 
 export default function App() {
 //We must then parse the URL to retrieve the code parameter after user logs in
@@ -89,17 +91,34 @@ function getUris(event) {
 
 
    return (
-  <>
+  <div className={styles.app}>
+
+  <div className={styles.apploggedOut}>
     {/* Logged OUT state */}
     {!isLoggedIn && (
-      <button onClick={handleLogIn}>
+      <>
+      <img className={styles.img}
+       src={logoImg}
+       alt="logo test"
+      />
+
+      <button className={styles.button} onClick={handleLogIn}>
         Please Log in to Spotify
       </button>
+      </>
     )}
 
+    </div>
+   <div className={styles.apploggedIn}>
     {/* Logged IN state */}
     {isLoggedIn && (
       <> 
+       <img
+       src={logoImg}
+       alt="logo test"
+      />
+
+
         <h2>Welcome Back! {userName}</h2>
         <SearchBar
           setFunction={updateRootState}
@@ -127,7 +146,9 @@ function getUris(event) {
         />
       </>
     )}
-  </>
+    </div>
+  
+  </div>
 );
 
 }
