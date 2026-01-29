@@ -1,11 +1,11 @@
-
+import resultst from '../cssModules/resultstyles.module.css';
 
 export default function SearchResults(props) {
 
 
 return (
     <>
-    <div>
+    <div className={resultst.searchresults}>
      <ul>
       {props.result.map(({ id, artist, name, album }) => (
   <li key={id}>

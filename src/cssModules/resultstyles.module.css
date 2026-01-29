@@ -1,0 +1,9 @@
+/* The core rule (this is the key)
+
+Only class selectors are scoped in CSS Modules.
+Plain HTML selectors (button, div, h1, etc.) are NOT scoped. */
+
+.searchresults button {
+    background-color: aqua;
+    margin: 0;
+}
