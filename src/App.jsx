@@ -90,36 +90,19 @@ function getUris(event) {
 
 
 
-   return (
+  return (
   <div className={styles.app}>
-
-  <div className={styles.apploggedOut}>
-    {/* Logged OUT state */}
-    {!isLoggedIn && (
-      <>
-      <img className={styles.img}
-       src={logoImg}
-       alt="logo test"
-      />
-
-      <button className={styles.button} onClick={handleLogIn}>
-        Please Log in to Spotify
-      </button>
-      </>
-    )}
-
-    </div>
-   <div className={styles.apploggedIn}>
-    {/* Logged IN state */}
-    {isLoggedIn && (
-      <> 
-       <img
-       src={logoImg}
-       alt="logo test"
-      />
-
-
-        <h2>Welcome Back! {userName}</h2>
+    {!isLoggedIn ? (
+      <div className={styles.apploggedOut}>
+        <img className={styles.img} src={logoImg} alt="logo test" />
+        <button className={styles.button} onClick={handleLogIn}>
+          Log into Spotify!
+        </button>
+      </div>
+    ) : (
+      <div className={styles.apploggedIn}>
+       
+        <div className={styles.searchbar}>
         <SearchBar
           setFunction={updateRootState}
           searchInput={searchInput}
@@ -128,26 +111,31 @@ function getUris(event) {
           userInput={searchInput}
           accessToken={accessToken}
         />
+        <div className={styles.searchresults}>
+        <SearchResults result={result} handleCheck={handleCheck} />
+        </div>
+        </div>
 
-        <SearchResults
-          result={result}
-          handleCheck={handleCheck}
-        />
+         <div className={styles.loggedincenter}>
+         <img className={styles.img} src={logoImg} alt="logo test" />
+         <h2>Welcome {userName}!</h2>
+         </div>
 
-        <PlayList
-          playListName={playListName}
-          playList={playList}
-          updatePlayListName={updatePlayListName}
-          removeFromPlayList={removeFromPlayList}
-          savePlayListToSpotify={savePlayListToSpotify}
-          userId={userId}
-          accessToken={accessToken}
-          addTracksToPlaylist={addTracksToPlaylist}
-        />
-      </>
+        <div className={styles.playlist}>
+          
+          <PlayList
+            playListName={playListName}
+            playList={playList}
+            updatePlayListName={updatePlayListName}
+            removeFromPlayList={removeFromPlayList}
+            savePlayListToSpotify={savePlayListToSpotify}
+            userId={userId}
+            accessToken={accessToken}
+            addTracksToPlaylist={addTracksToPlaylist}
+          />
+        </div>
+      </div>
     )}
-    </div>
-  
   </div>
 );
 

@@ -1,3 +1,6 @@
+*, *::before, *::after { box-sizing: border-box; };
+/*box-sizing: border-box changes how element sizes are calculated so that the width and height you set include padding and borders instead of those being added on afterward. Before this rule, elements silently grow larger than their defined size, often causing overflow and broken layouts; after it, elements stay within their intended dimensions and behave predictably. Applying it to *, *::before, and *::after ensures all elements and pseudo-elements follow the same sizing rules, which is why it’s a standard best practice in modern CSS.*/
+
 html, body, #root {
   width: 100%;
   height: 100%;
@@ -58,10 +61,12 @@ h1 {
 /* Page background */
 body {
   background-image: url('./imgs/backgroundimg.png');
+  min-height: 100vh;             /* key for body to be full viewport*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  justify-content: center;
+  display: flex;
+  
 }
 
 /*@media (prefers-color-scheme: light) {
