@@ -4,6 +4,46 @@ Only class selectors are scoped in CSS Modules.
 Plain HTML selectors (button, div, h1, etc.) are NOT scoped. */
 
 .searchresults button {
-    background-color: aqua;
+    background-color: transparent;
     margin: 0;
+    padding: 0;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
+
+.searchresults button:hover {
+  border-color: #646cff;
+}
+
+.list {
+ border:  1px solid transparent;
+ padding: 5px; 
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin: 0;
+ color: white;  
+}
+
+.text { flex: 1; margin-right: 12px; }   /* gives text space, keeps button stable */
+
+.label {
+ font-weight: 600;
+ margin:0px;
+ padding: 0px;
+ white-space: nowrap;   
+}
+
+.list:hover {
+  background-color: rgba(200, 200, 200, 0.15);
+}
+
+
+
+ 
