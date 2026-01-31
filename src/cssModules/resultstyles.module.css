@@ -15,6 +15,10 @@ Plain HTML selectors (button, div, h1, etc.) are NOT scoped. */
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    border-color: rgb(180, 210, 255);
+
+
+;
 }
 
 .searchresults button:hover {

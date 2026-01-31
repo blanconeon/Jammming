@@ -1,5 +1,5 @@
 import { mockTracks } from "./mockTracks";
-  
+import sbar from "../cssModules/searchbar.module.css";  
 
 export default function SearchBar(props) {
 
@@ -13,16 +13,19 @@ export default function SearchBar(props) {
 
 
     return (
+      <div className={sbar.searchForm}>
      <form onSubmit={handleSubmit} >
       <input
+        className={sbar.inputbar}
         type="text"
         aria-label="Search"
-        placeholder="What's on your mind?"
+        placeholder="Find a song or artist…"
         value={props.searchInput}
         onChange={props.setFunction}
       />
-      <input type="submit" value="Search" />
+      <input className={sbar.searchButton} type="submit" value="Search" />
     </form>
+    </div>
 )
 }
 

@@ -1,0 +1,39 @@
+.inputbar {
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-size: 1rem;
+  margin-right: 20px;
+  outline: none; /*outline: none; removes the browser’s default focus ring, allowing your custom :focus styles to show*/
+  font-size: 1.1rem;   /* bigger text */
+  font-weight: 500;    /* slightly bolder, not heavy */
+  border: 1px solid #ccc; /* is important for it to behave predictably, if not defined the browser will default it and it can look odd. */
+}
+
+.searchForm {
+  display: flex;
+  gap: 12px;
+}
+
+.inputbar:focus {
+  border-color: rgb(180, 210, 255);
+  box-shadow: 0 0 0 3px rgba(180, 210, 255, 0.3);
+}
+
+.searchButton {
+ padding: 12px 22px;
+  font-size: 1.05rem;   /* slightly bigger */
+  font-weight: 600;     /* confident but not heavy */
+
+  border-radius: 999px;
+
+  background-color: rgb(150, 185, 240);
+  color: white;
+
+  cursor: pointer; 
+}
+
+.searchButton:hover {
+  background-color: #646cff;
+  border-color: rgb(180, 210, 255);
+  box-shadow: 0 0 0 3px rgba(180, 210, 255, 0.3);
+}
