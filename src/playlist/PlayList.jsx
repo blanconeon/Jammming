@@ -1,4 +1,5 @@
 import TrackList from '../tracklist/TrackList';
+import listcss from '../cssModules/playlistcss.module.css';
 export default function PlayList (props) {
 
 async function handleSavePlayList(event) {
@@ -23,17 +24,18 @@ async function handleSavePlayList(event) {
   const canSave = props.playListName && props.playList.length > 0;
  return (
 <div>
- <form onSubmit={handleSavePlayList}>
-   <input type='text' 
+ <form onSubmit={handleSavePlayList} className={listcss.container}>
+   <input className={listcss.inputbox} type='text' 
           aria-label="Play List Name"
           placeholder="Play List Name"
           value={props.playListName}
           onChange={(e) => props.updatePlayListName(e.target.value)}
            /> 
-
-<TrackList playList={props.playList} 
+<div className={listcss.tracklist}> 
+<TrackList  playList={props.playList} 
 removeFromPlayList={props.removeFromPlayList}
 />
+</div>
 
 
 <input
@@ -41,7 +43,7 @@ removeFromPlayList={props.removeFromPlayList}
  value="Save Playlist to Spotify" 
  disabled={!canSave}
  title={!props.playListName ? "Enter a playlist name" : "Add at least one track"}
- 
+ className={listcss.savelist}
  />
 </form>
 </div>

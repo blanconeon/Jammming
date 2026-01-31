@@ -93,6 +93,6 @@ flex-direction: column;
  overflow-y: auto;      /* vertical scrollbar */
  overflow-x: hidden;
  border: 1px solid transparent; 
-
+ margin-top: 15px;
 }
 

@@ -1,10 +1,10 @@
 import Track from '../track/Track';
-
+import tracklist from '../cssModules/tracklistcss.module.css';
 export default function TrackList(props) {
 
 return (
     <>
-    <ul>{props.playList.map((item) => (
+    <ul className={tracklist.traklist}>{props.playList.map((item) => (
   <Track track={item} key={item.id} removeFromPlayList={props.removeFromPlayList} />
     ))}
 
