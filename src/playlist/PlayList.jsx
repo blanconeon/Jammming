@@ -24,7 +24,7 @@ async function handleSavePlayList(event) {
   const canSave = props.playListName && props.playList.length > 0;
  return (
 <div>
- <form onSubmit={handleSavePlayList} className={listcss.container}>
+ <form onSubmit={handleSavePlayList} className={listcss.playlistcontainer}>
    <input className={listcss.inputbox} type='text' 
           aria-label="Play List Name"
           placeholder="Play List Name"

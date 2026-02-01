@@ -6,7 +6,8 @@
   outline: none; /*outline: none; removes the browser’s default focus ring, allowing your custom :focus styles to show*/
   font-size: 1.1rem;   /* bigger text */
   font-weight: 500;    /* slightly bolder, not heavy */
-  border: 1px solid #ccc; /* is important for it to behave predictably, if not defined the browser will default it and it can look odd. */ 
+  border: 1px solid #ccc; /* is important for it to behave predictably, if not defined the browser will default it and it can look odd. */
+  margin-bottom: 10px; 
 }
 
 .inputbox:focus {
@@ -15,13 +16,14 @@
 }
 
 .savelist {
-padding: 12px 22px;
+  padding: 12px 22px;
   font-size: 1.05rem;   /* slightly bigger */
   font-weight: 600;     /* confident but not heavy */
   border-radius: 999px;
   background-color: rgb(150, 185, 240);
   color: white;
-  cursor: pointer;     
+  cursor: pointer;
+  margin-top: auto; 
 }
 
 .savelist:hover {
@@ -36,12 +38,19 @@ padding: 12px 22px;
  max-height: 625px;      /* controls when scrolling starts */
  overflow-y: auto;      /* vertical scrollbar */
  overflow-x: hidden;
- border: 1px solid white;     
+ border: 1px solid transparent;
+ margin-bottom: 15px;     
 }
 
 .playlistcontainer{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding: 0;
+    border: 4px solid transparent;
+    height: 700px;
+    width: 100%;
+    max-width: 500px;
+    flex: 1;
+    margin: 0 auto;
 }
