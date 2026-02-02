@@ -23,17 +23,14 @@
  padding: 12px 22px;
   font-size: 1.05rem;   /* slightly bigger */
   font-weight: 600;     /* confident but not heavy */
-
   border-radius: 999px;
-
-  background-color: rgb(150, 185, 240);
+  background-color:  #3B82F6;
   color: white;
-
   cursor: pointer; 
 }
 
 .searchButton:hover {
-  background-color: #646cff;
+  background-color: #60A5FA;
   border-color: rgb(180, 210, 255);
   box-shadow: 0 0 0 3px rgba(180, 210, 255, 0.3);
 }

@@ -26,8 +26,8 @@ async function handleSavePlayList(event) {
 <div>
  <form onSubmit={handleSavePlayList} className={listcss.playlistcontainer}>
    <input className={listcss.inputbox} type='text' 
-          aria-label="Play List Name"
-          placeholder="Play List Name"
+          aria-label="New Play List Name"
+          placeholder="New Play List Name"
           value={props.playListName}
           onChange={(e) => props.updatePlayListName(e.target.value)}
            /> 

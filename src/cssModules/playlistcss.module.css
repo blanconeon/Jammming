@@ -20,14 +20,14 @@
   font-size: 1.05rem;   /* slightly bigger */
   font-weight: 600;     /* confident but not heavy */
   border-radius: 999px;
-  background-color: rgb(150, 185, 240);
+  background-color: #1DB954;
   color: white;
   cursor: pointer;
-  margin-top: auto; 
+  
 }
 
 .savelist:hover {
-  background-color: #646cff;
+  background-color: #1ED760;
   border-color: rgb(180, 210, 255);
   box-shadow: 0 0 0 3px rgba(180, 210, 255, 0.3);
 }

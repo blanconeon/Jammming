@@ -19,7 +19,7 @@ export default function SearchBar(props) {
         className={sbar.inputbar}
         type="text"
         aria-label="Search"
-        placeholder="Find a song or artist…"
+        placeholder="Enter A Song Title"
         value={props.searchInput}
         onChange={props.setFunction}
       />
