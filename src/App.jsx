@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import SearchBar from './searchbar/SearchBar';
 import SearchResults from './searchresults/SearchResults';
 import PlayList from './playlist/PlayList';
-//import accessToken from './spotifyApis/spotifyToken';
 import getMusic from './spotifyApis/spotifyApi'; 
 import { preparePKCEAndRedirect } from './spotifyApis/spotifyToken';
 import {getToken} from './spotifyApis/spotifyToken';
@@ -106,7 +105,7 @@ function getUris(event) {
 
     {!isLoggedIn ? (
       <div className={styles.apploggedOut}>
-        
+        <p className={styles.paragraph}>Welcome to Jamming — the easy way to build Spotify playlists. Log in with your Spotify account to search for your favorite tracks, mix and match them into your own custom playlist, give it a fun name, and save it straight to Spotify. Jamming89 simplifies playlist creation so you can focus on discovering music you love.</p>
         <button className={styles.button} onClick={handleLogIn}>
           Log into Spotify!
         </button>
