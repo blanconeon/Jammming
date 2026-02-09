@@ -21,7 +21,9 @@ async function handleSavePlayList(event) {
 }
  
 //  Derived boolean: can we save?
-  const canSave = props.playListName && props.playList.length > 0;
+const hasTracks = props.playList.length > 0;
+const canSave = hasTracks && props.playListName;
+
  return (
 <div>
  <form onSubmit={handleSavePlayList} className={listcss.playlistcontainer}>
@@ -38,13 +40,19 @@ removeFromPlayList={props.removeFromPlayList}
 </div>
 
 
-<input
- type="submit"
- value="Save Playlist to Spotify" 
- disabled={!canSave}
- title={!props.playListName ? "Enter a playlist name" : "Add at least one track"}
- className={listcss.savelist}
- />
+{hasTracks && (
+  <input
+    type="submit"
+    value="Save Playlist to Spotify"
+    disabled={!canSave}
+    title={
+      !props.playListName
+        ? "Enter a playlist name"
+        : "Add at least one track"
+    }
+    className={listcss.savelist}
+  />
+)}
 </form>
 </div>
  )

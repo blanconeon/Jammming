@@ -60,13 +60,23 @@ h1 {
 
 /* Page background */
 body {
-  background-image: url('./imgs/backgroundimg.png');
-  min-height: 100vh;             /* key for body to be full viewport*/
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  background: none; /* remove your current image */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('./imgs/pexels-daniel-reche-718241-3721941.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  
+  filter: blur(3px);
+  z-index: -1;
 }
 
 /*@media (prefers-color-scheme: light) {

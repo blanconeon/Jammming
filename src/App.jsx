@@ -10,7 +10,7 @@ import {getToken} from './spotifyApis/spotifyToken';
 import {getUserProfile} from './spotifyApis/spotifyApi';
 import {savePlayListToSpotify} from './spotifyApis/spotifyApi';
 import {addTracksToPlaylist} from './spotifyApis/spotifyApi';
-import logoImg from './imgs/logoimg.png';
+
 
 
 export default function App() {
@@ -91,10 +91,22 @@ function getUris(event) {
 
 
   return (
-  <div className={styles.app}>
+    <>
+    <header className={styles.appHeader}>
+  <div className={styles.appHeaderInner}>
+   <h1 className={styles.appTitle}>
+  ja<span className={styles.accent}>mmm</span>ing89
+</h1>
+ 
+  </div>
+  </header>
+
+
+  <div className={styles.app}> 
+
     {!isLoggedIn ? (
       <div className={styles.apploggedOut}>
-        <img className={styles.img} src={logoImg} alt="logo test" />
+        
         <button className={styles.button} onClick={handleLogIn}>
           Log into Spotify!
         </button>
@@ -116,8 +128,7 @@ function getUris(event) {
         </div>
         </div>
 
-         <div className={styles.loggedincenter}>
-         <img className={styles.img} src={logoImg} alt="logo test" />
+         <div className={styles.loggedincenter}>       
          <h2>Welcome {userName}!</h2>
          </div>
 
@@ -137,6 +148,7 @@ function getUris(event) {
       </div>
     )}
   </div>
+  </>
 );
 
 }
