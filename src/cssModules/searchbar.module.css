@@ -7,6 +7,7 @@
   font-size: 1.1rem;   /* bigger text */
   font-weight: 500;    /* slightly bolder, not heavy */
   border: 1px solid #ccc; /* is important for it to behave predictably, if not defined the browser will default it and it can look odd. */
+  background-color: rgb(70, 70, 70);
 }
 
 .searchForm {

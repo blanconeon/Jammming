@@ -7,7 +7,7 @@ export default function SearchResults(props) {
 return (
     <>
     <div className={resultst.searchresults}>
-     <ul>
+     <ul className={resultst.unli}>
       {props.result.map(({ id, artist, name, album }) => (
   <li key={id} className={resultst.list}>
     <div className={resultst.text}>

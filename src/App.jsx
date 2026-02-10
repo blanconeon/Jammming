@@ -92,6 +92,7 @@ function getUris(event) {
   return (
     <>
     <header className={styles.appHeader}>
+      {!userName ?  null : (<h2>Welcome {userName}!</h2>) }
   <div className={styles.appHeaderInner}>
    <h1 className={styles.appTitle}>
   ja<span className={styles.accent}>mmm</span>ing89
@@ -105,7 +106,7 @@ function getUris(event) {
 
     {!isLoggedIn ? (
       <div className={styles.apploggedOut}>
-        <p className={styles.paragraph}>Welcome to Jamming — the easy way to build Spotify playlists. Log in with your Spotify account to search for your favorite tracks, mix and match them into your own custom playlist, give it a fun name, and save it straight to Spotify. Jamming89 simplifies playlist creation so you can focus on discovering music you love.</p>
+        <p className={styles.paragraph}>Welcome to Jamming89 — the easy way to build Spotify playlists. Log in with your Spotify account to search for your favorite tracks, mix and match them into your own custom playlist, give it a fun name, and save it straight to Spotify! Jamming89 simplifies playlist creation so you can focus on discovering music you love.</p>
         <button className={styles.button} onClick={handleLogIn}>
           Log into Spotify!
         </button>
@@ -128,7 +129,7 @@ function getUris(event) {
         </div>
 
          <div className={styles.loggedincenter}>       
-         <h2>Welcome {userName}!</h2>
+         
          </div>
 
         <div className={styles.playlist}>
