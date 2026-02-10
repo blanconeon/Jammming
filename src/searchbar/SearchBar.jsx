@@ -1,5 +1,7 @@
 import { mockTracks } from "./mockTracks";
-import sbar from "../cssModules/searchbar.module.css";  
+import sbar from "../cssModules/searchbar.module.css"; 
+import { Search } from "lucide-react";
+ 
 
 export default function SearchBar(props) {
 
@@ -23,7 +25,10 @@ export default function SearchBar(props) {
         value={props.searchInput}
         onChange={props.setFunction}
       />
-      <input className={sbar.searchButton} type="submit" value="Search" />
+     <button className={sbar.searchButton} type="submit" aria-label="Search">
+    <Search size={18} />
+   </button>
+ 
     </form>
     </div>
 )
