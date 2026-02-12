@@ -16,20 +16,22 @@ export default function SearchBar(props) {
 
     return (
       <div className={sbar.searchForm}>
-     <form onSubmit={handleSubmit} >
-      <input
-        className={sbar.inputbar}
-        type="text"
-        aria-label="Search"
-        placeholder="Enter A Song Title"
-        value={props.searchInput}
-        onChange={props.setFunction}
-      />
-     <button className={sbar.searchButton} type="submit" aria-label="Search">
-    <Search size={18} />
-   </button>
- 
-    </form>
+     <form onSubmit={handleSubmit} className={sbar.form}>
+  <div className={sbar.searchGroup}>
+    <input
+      className={sbar.inputbar}
+      type="text"
+      aria-label="Search"
+      placeholder="Enter A Song Title"
+      value={props.searchInput}
+      onChange={props.setFunction}
+    />
+    <button className={sbar.searchButton} type="submit" aria-label="Search">
+      <Search size={18} strokeWidth={2.5} />
+    </button>
+  </div>
+</form>
+
     </div>
 )
 }

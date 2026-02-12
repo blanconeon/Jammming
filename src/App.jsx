@@ -128,9 +128,6 @@ function getUris(event) {
         </div>
         </div>
 
-         <div className={styles.loggedincenter}>       
-         
-         </div>
 
         <div className={styles.playlist}>
           
