@@ -24,6 +24,7 @@ const [playList, setPlayList] = useState([]);
 const [userId, setUserId] = useState('');
 const [userName, setUserName] = useState('');
 const [accessToken, setAccessToken] = useState('');
+const [userImage, setUserImage] = useState (null);
 const isLoggedIn = Boolean(accessToken); // Boolean(value) is a JavaScript function that converts any value into true or false based on whether the value is truthy or falsy.
 
 
@@ -46,9 +47,10 @@ useEffect(()=> {
 useEffect(() => {
   async function loadUser() {
     if (accessToken) {
-      const {id, name} = await getUserProfile(accessToken);
+      const {id, name, image} = await getUserProfile(accessToken);
       setUserId(id);
       setUserName(name);                            // //storing in state
+      setUserImage(image);   
     }
   }
 
@@ -93,6 +95,10 @@ function getUris(event) {
     <>
     <header className={styles.appHeader}>
       {!userName ?  null : (<h2>Welcome {userName}!</h2>) }
+      {userImage && ( //same logic as above in ternary
+  <img src={userImage} alt="Profile" className={styles.avatar} /> 
+)}
+
   <div className={styles.appHeaderInner}>
    <h1 className={styles.appTitle}>
   ja<span className={styles.accent}>mmm</span>ing89
@@ -108,7 +114,7 @@ function getUris(event) {
       <div className={styles.apploggedOut}>
         <p className={styles.paragraph}>Welcome to Jamming89 — the easy way to build Spotify playlists. Log in with your Spotify account to search for your favorite tracks, mix and match them into your own custom playlist, give it a fun name, and save it straight to Spotify! Jamming89 simplifies playlist creation so you can focus on discovering music you love.</p>
         <button className={styles.button} onClick={handleLogIn}>
-          Log into Spotify!
+          <span className={styles.logletters}>Sign in with Spotify</span>
         </button>
       </div>
     ) : (

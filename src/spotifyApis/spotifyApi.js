@@ -43,11 +43,16 @@ export async function getUserProfile(accessToken) {
 
   const data = await response.json();
   console.log(data);
+
+  // Safely extract image (users may not have one) 
   
+  const imageUrl = data.images && data.images.length > 0 ? data.images[1].url : null;
+  //“If data.images exists and contains at least one image, use the first image’s URL; otherwise, return null to safely handle users who don’t have a profile picture.” SPOTIFY RETURNS TWO IMAGES IN THE ARRAY SELECT WHAT SIZE BEST SUIT YOU. 
   return {
     id: data.id,
-    name: data.display_name
-  };
+    name: data.display_name,
+    image: imageUrl
+  }; 
 }
    
 
