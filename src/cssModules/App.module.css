@@ -16,8 +16,11 @@
   border-bottom: 1px solid seashell; /* the line */
   display: flex;
   justify-content: center;
- 
-  
+}
+
+.avatar {
+  margin-top: 15px;
+  border-radius: 50%;
 }
 
 .appHeaderInner {
@@ -106,6 +109,10 @@ border: solid transparent 4px;
 justify-content: center;
 }
 
+.avatar {
+  width: 45px;
+  height: 45px;
+}
 .searchbar {
 width: 600px;
 height: 100%;
