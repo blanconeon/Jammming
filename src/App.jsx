@@ -23,7 +23,7 @@ const [playListName, setPlayListName] = useState('');
 const [playList, setPlayList] = useState([]);
 const [userId, setUserId] = useState('');
 const [userName, setUserName] = useState('');
-const [accessToken, setAccessToken] = useState('');
+const [accessToken, setAccessToken] = useState(localStorage.getItem('access_token') || ''); // references whats saved in localStorage to allow for stored accessToken to stay in when page is refreshed
 const [userImage, setUserImage] = useState (null);
 const isLoggedIn = Boolean(accessToken); // Boolean(value) is a JavaScript function that converts any value into true or false based on whether the value is truthy or falsy.
 

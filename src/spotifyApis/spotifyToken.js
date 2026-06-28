@@ -41,7 +41,8 @@ const base64encode = (input) => {
   localStorage.setItem('code_verifier', codeVerifier);
 
   // Build the authorization URL, including the code challenge
-  const clientId = 'aa0c6d616280473e980cd52bd6028a41'; // Replace with your actual client ID
+  const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID; // client id is imported from .env to be kept safe
+  
   const redirectUri = 'http://127.0.0.1:5173/'; // Replace with your redirect URI
   const scopes = 'user-read-private playlist-modify-public playlist-modify-private'; // Replace with your needed scopes
 
@@ -54,7 +55,8 @@ const base64encode = (input) => {
 
  export async function getToken(code, setAccessToken) {
 
-  const clientId = 'aa0c6d616280473e980cd52bd6028a41'; // Replace with your actual client ID
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID; // client id is imported from .env to be kept safe
+
   const redirectUri = 'http://127.0.0.1:5173/'; // Replace with your redirect URI
 
   // 1. Get the code verifier we saved earlier
