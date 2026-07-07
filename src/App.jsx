@@ -80,16 +80,6 @@ function removeFromPlayList(id, clicked) {
 function updatePlayListName(value){
    setPlayListName(value); 
 }    
-/*
-function getUris(event) {
-    event.preventDefault();
-    const uris = playList.map( track => track.uri);
-    alert('List Saved!');
-    console.log(uris);
-    setPlayList([]);
-}*/
-
-
 
   return (
     <>
